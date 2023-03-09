@@ -56,7 +56,7 @@ public void reportError(String errorString) {
 
 /* Punctution */
 
-STRING	: '"' (ESC|.)*? '"' { processString() ;} ;
+STRING	: '"'  (ESC|.)*? '"' { processString() ;} ;
 fragment ESC: '\\"' | '\\\\' ;
 
 PERIOD              : '.';
@@ -86,6 +86,7 @@ LESS_EQ_OPERATOR            : '<=';
 EQ_OPERATOR                 : '=' ;
 ASSIGN_OPERATOR 	        : '<-';
 RIGHTARROW                  : '=>';
+GREATER_OPERATOR             : '>';
 DoubleQout  : '"';
 
 fragment A : [Aa];fragment B : [Bb];fragment C : [Cc];fragment D : [Dd];fragment E : [Ee];fragment F : [Ff];
@@ -124,7 +125,7 @@ DIGIT : [0-9];
 TYPE_ID: [A-Z] IDENTIFIER*;
 
 OBJECT_ID: [a-z] IDENTIFIER*;
-IDENTIFIER: LETTER| DIGIT| '_' ;
+IDENTIFIER:  LETTER| DIGIT| '_' | '['|']';
 
 
 fragment

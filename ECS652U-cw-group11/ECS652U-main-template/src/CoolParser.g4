@@ -17,9 +17,8 @@ coolClass :CLASS TYPE_ID (INHERITS TYPE_ID)?
 	;
 
 feature
-   : OBJECT_ID PARENT_OPEN (formal (COMMA formal)*)* PARENT_CLOSE COLON TYPE_ID CURLY_OPEN expression CURLY_CLOSE # method
-   | OBJECT_ID COLON TYPE_ID (ASSIGN_OPERATOR expression)? # property
-   ;
+   : OBJECT_ID PARENT_OPEN (formal (COMMA formal)*)* PARENT_CLOSE COLON TYPE_ID CURLY_OPEN expression CURLY_CLOSE
+   | OBJECT_ID COLON TYPE_ID (ASSIGN_OPERATOR expression)?;
 
 formal
    : OBJECT_ID COLON TYPE_ID
@@ -45,8 +44,10 @@ expression
    | expression LESS_OPERATOR expression
    | expression LESS_EQ_OPERATOR expression
    | expression EQ_OPERATOR expression
+   | expression GREATER_OPERATOR expression
    | NOT expression
    | PARENT_OPEN expression PARENT_CLOSE
+
    | OBJECT_ID
    | INT
    | STRING
