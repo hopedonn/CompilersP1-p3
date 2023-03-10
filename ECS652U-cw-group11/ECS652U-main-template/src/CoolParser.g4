@@ -24,10 +24,12 @@ formal
    : OBJECT_ID COLON TYPE_ID
    ;
 
+
+
 /* method argument */
 expression
-   : OBJECT_ID ASSIGN_OPERATOR expression
-   |expression (AT TYPE_ID)? PERIOD OBJECT_ID PARENT_OPEN (expression (COMMA expression)*)* PARENT_CLOSE
+   : assign
+   |staticDispatch
    | OBJECT_ID PARENT_OPEN (expression (COMMA expression)*)* PARENT_CLOSE
    | IF expression THEN expression ELSE expression FI
    | WHILE expression LOOP expression POOL
@@ -56,5 +58,8 @@ expression
    | OBJECT_ID ASSIGN_OPERATOR expression
 
    ;
-
+   branch
+      : OBJECT_ID COLON TYPE_ID RIGHTARROW expression SEMICOLON;
+   assign
+   : OBJECT_ID ASSIGN_OPERATOR expression;
 
